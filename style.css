@@ -10,14 +10,62 @@ body {
   justify-content: center;
   margin: 0;
   min-height: 100vh;
+  padding: 24px;
 }
 
-.calculator {
+.app {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: min(92vw, 430px);
+}
+
+.calculator-panel {
   background: #1e293b;
   border-radius: 18px;
   box-shadow: 0 15px 35px rgba(15, 23, 42, 0.25);
   padding: 20px;
-  width: min(92vw, 350px);
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  gap: 10px;
+}
+
+.mode-btn,
+.graph-btn,
+.plot-btn {
+  border: 0;
+  border-radius: 8px;
+  color: #f8fafc;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 8px 16px;
+  transition: filter 0.15s, transform 0.1s;
+}
+
+.mode-btn,
+.graph-btn {
+  background: #475569;
+}
+
+.plot-btn {
+  background: #16a34a;
+}
+
+.mode-btn:hover,
+.graph-btn:hover,
+.plot-btn:hover {
+  filter: brightness(1.2);
+}
+
+.mode-btn:active,
+.graph-btn:active,
+.plot-btn:active {
+  transform: scale(0.96);
 }
 
 .display {
@@ -25,7 +73,7 @@ body {
   border: 0;
   border-radius: 10px;
   color: #f8fafc;
-  font-size: 2.25rem;
+  font-size: 2.15rem;
   margin-bottom: 16px;
   outline: 0;
   padding: 18px 12px;
@@ -45,8 +93,8 @@ button {
   border-radius: 10px;
   color: #f8fafc;
   cursor: pointer;
-  font-size: 1.25rem;
-  min-height: 58px;
+  font-size: 1.1rem;
+  min-height: 56px;
   transition: filter 0.15s, transform 0.1s;
 }
 
@@ -60,10 +108,15 @@ button:active {
 
 .operator {
   background: #4f46e5;
+  font-weight: bold;
 }
 
 .function {
   background: #64748b;
+}
+
+.scientific {
+  background: #7c3aed;
 }
 
 .equals {
@@ -73,4 +126,73 @@ button:active {
 
 .zero {
   grid-column: span 2;
+}
+
+.graph-panel {
+  background: #1e293b;
+  border-radius: 18px;
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.25);
+  padding: 16px;
+  transition: all 0.2s ease;
+}
+
+.graph-panel.hidden {
+  display: none;
+}
+
+.graph-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.graph-controls label {
+  color: #f8fafc;
+  font-weight: bold;
+}
+
+.graph-controls input {
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  color: #f8fafc;
+  flex: 1;
+  font-size: 1rem;
+  padding: 10px 12px;
+}
+
+#graphCanvas {
+  background: #0f172a;
+  border-radius: 12px;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 14px;
+  }
+
+  .app {
+    width: 96vw;
+  }
+
+  .calculator-panel {
+    padding: 14px;
+  }
+
+  .display {
+    font-size: 1.6rem;
+  }
+
+  button {
+    min-height: 48px;
+  }
+
+  .graph-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
